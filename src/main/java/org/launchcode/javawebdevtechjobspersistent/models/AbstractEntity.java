@@ -3,8 +3,21 @@ package org.launchcode.javawebdevtechjobspersistent.models;
 import java.util.Objects;
 
 
-public abstract class AbstractEntity {
+import org.launchcode.javawebdevtechjobspersistent.models.data.JobRepository;
+import javax.persistence.*;
+import org.launchcode.javawebdevtechjobspersistent.models.Job;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
+import javax.transaction.Transactional;
+import org.springframework.data.MappedSuperClass;
+
+
+@MappedSuperClass
+@Entity
+public abstract class AbstractEntity {
+    @Id
+    @GeneratedValue
     private int id;
 
     private String name;
