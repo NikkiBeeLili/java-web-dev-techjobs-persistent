@@ -1,25 +1,24 @@
 package org.launchcode.javawebdevtechjobspersistent.models;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.Objects;
 
 
-import org.launchcode.javawebdevtechjobspersistent.models.data.JobRepository;
-import javax.persistence.*;
-import org.launchcode.javawebdevtechjobspersistent.models.Job;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
-
-import javax.transaction.Transactional;
-import org.springframework.data.MappedSuperClass;
 
 
-@MappedSuperClass
-@Entity
+
+@MappedSuperclass
 public abstract class AbstractEntity {
     @Id
     @GeneratedValue
     private int id;
 
+    @NotBlank(message="Field 'name' is required")
+    @Size(min=2)
     private String name;
 
     public int getId() {
