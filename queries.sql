@@ -1,6 +1,6 @@
 ## Part 1: Test it with SQL
-SELECT name, employer, location, position_type, core_competency
-From jobs;
+SELECT *
+FROM Jobs;
 
 ## Part 2: Test it with SQL
 
