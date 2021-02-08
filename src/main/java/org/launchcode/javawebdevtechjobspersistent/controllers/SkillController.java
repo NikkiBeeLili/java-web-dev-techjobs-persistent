@@ -19,7 +19,13 @@ public class SkillController {
     @Autowired
     private SkillRepository skillRepository;
 
-    //findAll(), save(), findById()(?)
+    @RequestMapping("")
+    public String returnAllSkills (Model model) {
+        model.addAttribute("skills", skillRepository );
+        return "skills/view";
+    }
+
+
 
 
     @GetMapping("add")
@@ -31,7 +37,7 @@ public class SkillController {
     @PostMapping("add")
     public String processAddSkillForm(@ModelAttribute @Valid Skill newSkill,
                                          Errors errors, Model model) {
-        model.addAttribute("skills", skillRepository.findAll());
+
 
 
         if (errors.hasErrors()) {
