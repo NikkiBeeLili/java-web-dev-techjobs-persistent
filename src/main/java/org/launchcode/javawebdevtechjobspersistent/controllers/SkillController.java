@@ -21,8 +21,8 @@ public class SkillController {
 
     @RequestMapping("")
     public String returnAllSkills (Model model) {
-        model.addAttribute("skills", skillRepository );
-        return "skills/view";
+        model.addAttribute("skills", skillRepository.findAll() );
+        return "skills";
     }
 
 

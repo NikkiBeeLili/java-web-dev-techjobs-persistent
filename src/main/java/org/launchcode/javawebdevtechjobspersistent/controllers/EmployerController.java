@@ -20,8 +20,8 @@ public class EmployerController {
 
     @RequestMapping("")
     public String returnAllEmployers (Model model) {
-        model.addAttribute("employers", employerRepository );
-        return "employers/view";
+        model.addAttribute("employers", employerRepository.findAll() );
+        return "employers";
     }
 
 

@@ -1,9 +1,13 @@
 package org.launchcode.javawebdevtechjobspersistent.models;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 
 @Entity
-public class Job{
+public class Job extends AbstractEntity{
 
     @Id
     @GeneratedValue
@@ -11,17 +15,21 @@ public class Job{
 
     private String name;
 
-    private String employer;
+   @ManyToOne
+   @NotNull(message="Field 'employer' required")
+    private Employer employer;
     private String skills;
+
+    public Job(int id, String name,  Employer employer, String skills) {
+        this.id = id;
+        this.name = name;
+        this.employer = employer;
+        this.skills = skills;
+    }
 
     public Job() {
     }
 
-    public Job(String anEmployer, String someSkills) {
-        super();
-        this.employer = anEmployer;
-        this.skills = someSkills;
-    }
 
     // Getters and setters.
 
@@ -33,11 +41,11 @@ public class Job{
         this.name = name;
     }
 
-    public String getEmployer() {
+    public Employer getEmployer() {
         return employer;
     }
 
-    public void setEmployer(String employer) {
+    public void setEmployer(Employer employer) {
         this.employer = employer;
     }
 
