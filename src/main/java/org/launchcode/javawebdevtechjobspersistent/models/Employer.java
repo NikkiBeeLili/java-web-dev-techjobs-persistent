@@ -10,8 +10,8 @@ import java.util.List;
 
 @Entity
 public class Employer extends AbstractEntity {
+    @JoinColumn
     @OneToMany(mappedBy="job")
-    @JoinColumn(name="job", referencedColumnName="employer")
     private final List<Job> jobs= new ArrayList<>();
     @NotBlank(message="Field 'location' is required")
     @Size(min=2)

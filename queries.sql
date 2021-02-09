@@ -8,5 +8,6 @@ FROM Jobs
 WHERE location=St. Louis is TRUE;
 
 ## Part 3: Test it with SQL
+DROP TABLE Jobs;
 
 ## Part 4: Test it with SQL
