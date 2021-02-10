@@ -1,6 +1,7 @@
 package org.launchcode.javawebdevtechjobspersistent.models;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
@@ -10,9 +11,11 @@ public class Job extends AbstractEntity{
     @ManyToOne
     @NotNull(message="Field 'employer' required")
     private Employer employer;
-    private String skills;
 
-    public Job(Employer employer, String skills) {
+    @ManyToMany(mappedBy="skills")
+    private Skill skills;
+
+    public Job(Employer employer, Skill skills) {
         this.employer = employer;
         this.skills = skills;
     }
@@ -30,11 +33,11 @@ public class Job extends AbstractEntity{
         this.employer = employer;
     }
 
-    public String getSkills() {
+    public Skill getSkills() {
         return skills;
     }
 
-    public void setSkills(String skills) {
+    public void setSkills(Skill skills) {
         this.skills = skills;
     }
 }

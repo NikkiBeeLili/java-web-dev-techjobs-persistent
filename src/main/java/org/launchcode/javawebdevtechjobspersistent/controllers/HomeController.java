@@ -47,7 +47,6 @@ public class HomeController {
         }
         Employer employer = employerRepository.findById(employerId).orElse(new Employer());
         newJob.setEmployer(employer);
-        // Create new Employer object based on the incoming employerId parameter.
         return "redirect:";
     }
 

@@ -20,9 +20,9 @@ public class SkillController {
     private SkillRepository skillRepository;
 
     @RequestMapping("")
-    public String returnAllSkills (Model model) {
-        model.addAttribute("skills", skillRepository.findAll() );
-        return "skills";
+    public String index(Model model) {
+        model.addAttribute("skills", skillRepository.findAll());
+        return "skills/index";
     }
 
 
