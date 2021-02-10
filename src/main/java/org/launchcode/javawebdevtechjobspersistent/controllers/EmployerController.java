@@ -19,11 +19,10 @@ public class EmployerController {
     private EmployerRepository employerRepository;
 
     @RequestMapping("")
-    public String returnAllEmployers (Model model) {
-        model.addAttribute("employers", employerRepository.findAll() );
-        return "employers";
+    public String index(Model model) {
+        model.addAttribute("employers", employerRepository.findAll());
+        return "employers/index";
     }
-
 
     @GetMapping("add")
     public String displayAddEmployerForm(Model model) {
@@ -57,5 +56,4 @@ public class EmployerController {
 
 
     }
-
 }

@@ -31,25 +31,23 @@ public class HomeController {
 
     @GetMapping("add")
     public String displayAddJobForm(Model model) {
-        model.addAttribute("title", "Add Job");
         model.addAttribute(new Job());
+        model.addAttribute("title", "Add Job");
+        model.addAttribute("employers", employerRepository.findAll());
         return "add";
     }
 
     @PostMapping("add")
     public String processAddJobForm(@ModelAttribute @Valid Job newJob,
-                                    Errors errors, Model model,  @RequestParam List<Integer> skills, @RequestParam Employer employer) {
+                                    Errors errors, Model model,  @RequestParam List<Integer> skills, @RequestParam int employerId) {
 
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add Job");
-
             return "add";
         }
-        else {
-            model.addAttribute("types", "submit");
-            model.addAttribute(new Employer());
-        }
-
+        Employer employer = employerRepository.findById(employerId).orElse(new Employer());
+        newJob.setEmployer(employer);
+        // Create new Employer object based on the incoming employerId parameter.
         return "redirect:";
     }
 
@@ -58,6 +56,5 @@ public class HomeController {
 
         return "view";
     }
-
 
 }
