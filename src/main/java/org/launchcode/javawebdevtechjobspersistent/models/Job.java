@@ -1,9 +1,12 @@
 package org.launchcode.javawebdevtechjobspersistent.models;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Job extends AbstractEntity{
@@ -12,12 +15,13 @@ public class Job extends AbstractEntity{
     @NotNull(message="Field 'employer' required")
     private Employer employer;
 
-    @ManyToMany(mappedBy="skills")
-    private Skill skills;
+    @ManyToMany
+    @JoinColumn(name="skill_name")
+    private List<Skill> skills= new ArrayList<>();
 
     public Job(Employer employer, Skill skills) {
         this.employer = employer;
-        this.skills = skills;
+        this.skills = (List<Skill>) skills;
     }
 
     public Job() {
@@ -34,10 +38,10 @@ public class Job extends AbstractEntity{
     }
 
     public Skill getSkills() {
-        return skills;
+        return (Skill) skills;
     }
 
     public void setSkills(Skill skills) {
-        this.skills = skills;
+        this.skills = (List<Skill>) skills;
     }
 }
