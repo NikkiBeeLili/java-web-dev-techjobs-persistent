@@ -13,7 +13,7 @@ public class Skill extends AbstractEntity {
     private List<Job> jobs= new ArrayList<>();
 
     @Size(max=500)
-    private String description;
+    private static String description;
 
     public List<Job> getJobs() {
         return jobs;
@@ -23,7 +23,7 @@ public class Skill extends AbstractEntity {
         this.jobs = jobs;
     }
 
-    public String getDescription() {
+    public static String getDescription() {
         return description;
     }
 
