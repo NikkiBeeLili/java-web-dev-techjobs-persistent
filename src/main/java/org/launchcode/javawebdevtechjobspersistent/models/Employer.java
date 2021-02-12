@@ -18,11 +18,11 @@ public class Employer extends AbstractEntity {
 
     @NotBlank(message="Field 'location' is required")
     @Size(min=2)
-    private static String location;
+    private String location;
 
     public Employer() {}
 
-    public static String getLocation() {
+    public String getLocation() {
         return location;
     }
 
@@ -38,3 +38,4 @@ public class Employer extends AbstractEntity {
         this.jobs = jobs;
     }
 }
+

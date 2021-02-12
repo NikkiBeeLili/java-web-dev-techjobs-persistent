@@ -11,3 +11,7 @@ WHERE location=St. Louis is TRUE;
 DROP TABLE techjobs.jobs;
 
 ## Part 4: Test it with SQL
+SELECT name, description
+FROM techjobs.skill
+WHERE job_id IS NOT NULL
+ORDER BY name ASC
